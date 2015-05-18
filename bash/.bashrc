@@ -68,23 +68,6 @@ clear() {
     tput cup $LINES 0;
 }
 
-function show_bits() {
-    g="\033[01;32m"
-    r="\033[01;31m"
-    n="\033[00m"
-    x="$1"
-    for ((bits=32;bits>=0;bits--)); do
-        check_bit="$(( 1 << ${bits} ))"
-        result="$(( ${check_bit} & ${x} ))"
-        if [[ "${result}" -eq "${check_bit}" ]]; then
-            echo -e -n "${g}1${n}"
-        else
-            echo -e -n "${r}0${n}"
-        fi
-    done
-echo
-}
-
 imgit() {
     curl -F "name=@$1" http://img.vim-cn.com/
 }

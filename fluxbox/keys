@@ -1,0 +1,224 @@
+# click on the desktop to get menus
+OnDesktop Mouse1 :HideMenus
+OnDesktop Mouse2 :WorkspaceMenu
+OnDesktop Mouse3 :RootMenu
+
+# scroll on the desktop to change workspaces
+OnDesktop Mouse4 :PrevWorkspace
+OnDesktop Mouse5 :NextWorkspace
+
+# scroll on the toolbar to change current window
+#OnToolbar Mouse4 :PrevWindow {static groups} (iconhidden=no)
+#OnToolbar Mouse5 :NextWindow {static groups} (iconhidden=no)
+#OnToolbar Mouse5  :Exec killall osd_cat; osdvol $(amixer -D hw:1 set Master 1%-|grep "Front Left: "|cut -d "[" -f2|cut -d"%" -f1)
+#OnToolbar Mouse4  :Exec killall osd_cat; osdvol $(amixer -D hw:1 set Master 1%+|grep "Front Left: "|cut -d "[" -f2|cut -d"%" -f1)
+
+# alt + left/right click to move/resize a window
+OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindowBorder Move1 :StartMoving
+
+OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnLeftGrip Move1 :StartResizing bottomleft
+OnRightGrip Move1 :StartResizing bottomright
+
+# alt + middle click to lower the window
+OnWindow Mod1 Mouse2 :Lower
+
+# control-click a window's titlebar and drag to attach windows
+OnTitlebar Control Mouse1 :StartTabbing
+OnTitlebar Mouse4 :PrevTab
+OnTitlebar Mouse5 :NextTab
+
+# double click on the titlebar to shade
+OnTitlebar Double Mouse1 :Shade
+
+# left click on the titlebar to move the window
+OnTitlebar Mouse1 :MacroCmd {Raise} {Focus} {ActivateTab}
+OnTitlebar Move1  :StartMoving
+
+# middle click on the titlebar to lower
+OnTitlebar Mouse2 :Lower
+
+# right click on the titlebar for a menu of options
+OnTitlebar Mouse3 :WindowMenu
+
+# alt-tab
+Mod1 Tab :NextWindow {groups} (workspace=[current])
+Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
+
+# cycle through tabs in current the window
+Mod4 Tab :NextTab
+Mod4 Shift Tab :PrevTab
+
+# go to a specific tab in the current window
+Mod4 1 :Tab 1
+Mod4 2 :Tab 2
+Mod4 3 :Tab 3
+Mod4 4 :Tab 4
+Mod4 5 :Tab 5
+Mod4 6 :Tab 6
+Mod4 7 :Tab 7
+Mod4 8 :Tab 8
+Mod4 9 :Tab 9
+
+# open a terminal
+Mod1 F1 :Exec x-terminal-emulator
+
+# open a dialog to run programs
+Mod1 F2 :Exec gmrun
+
+# volume settings, using common keycodes
+# if these don't work, use xev to find out your real keycodes
+176 :Exec amixer sset Master,0 1+
+174 :Exec amixer sset Master,0 1-
+160 :Exec amixer sset Master,0 toggle
+
+# current window commands
+Mod1 F4 :Close
+Mod1 F5 :Kill
+Mod1 F9 :Minimize
+Mod1 F10 :Maximize
+Mod1 F11 :Fullscreen
+
+# open the window menu
+Mod1 space :WindowMenu
+
+# exit fluxbox
+#Control Mod1 Delete :Exit
+
+# change to previous/next workspace
+Control Mod1 Left :PrevWorkspace
+Control Mod1 Right :NextWorkspace
+
+# send the current window to previous/next workspace
+Mod4 Left :SendToPrevWorkspace
+Mod4 Right :SendToNextWorkspace
+
+# send the current window and follow it to previous/next workspace
+Control Mod4 Left :TakeToPrevWorkspace
+Control Mod4 Right :TakeToNextWorkspace
+
+#Menu anywhere
+Mod4 F12			:RootMenu
+Mod1 F12	 		:ToggleDecor
+Control Mod1 t			:Exec terminator -b --geometry 700x500
+#Control Mod1 k			:Exec screenoff
+#Control Mod1 l			:Exec i3screensaver
+
+#Volume control?
+#None XF86AudioLowerVolume       :Exec killall osd_cat; osdvol $(amixer -D hw:0 set Master 1%- | grep Mono:\ Playback | cut -d "[" -f2 | cut -d "%" -f1)
+#None XF86AudioRaiseVolume       :Exec killall osd_cat; osdvol $(amixer -D hw:0 set Master 1%+ | grep Mono:\ Playback | cut -d "[" -f2 | cut -d "%" -f1)
+#None XF86AudioMute              :ToggleCmd {Exec amixer -D hw:1 set Master toggle && killall osd_cat;osdmsg "Muted"} {Exec amixer -D hw:0 set Master toggle && killall osd_cat;osdmsg "Unmuted"}
+
+#screenshots
+#None Print     :Exec import -window root /home/msweeney/screenshots/desktop_screenshot$(date +%F_%T).png;osdmsg "Screenshot taken"
+#Mod1 Print     :Exec import -frame -window $(xprop _NET_ACTIVE_WINDOW -root | awk '{print $5}') ~/screenshots/active_window_screenshot$(date +%F_%T).png;osdmsg "Active window screenshot taken"
+
+#Mod4 BackSpace :Exec killall osd_cat;osdclock
+
+#Mod4 Print	:Exec snip
+#Control Print	:Exec snipPaste
+
+# transparency
+Mod4 KP_1	:SetAlpha 15
+Mod4 KP_2	:SetAlpha 25
+Mod4 KP_3	:SetAlpha 50
+Mod4 KP_4	:SetAlpha 75
+Mod4 KP_5	:SetAlpha 100
+Mod4 KP_6	:SetAlpha 125
+Mod4 KP_7	:SetAlpha 150
+Mod4 KP_8	:SetAlpha 175
+Mod4 KP_9	:SetAlpha 200
+Mod4 KP_0	:SetAlpha 255
+
+
+#Mouse 8 and 9
+#Mouse9		:Exec rdpwatch
+Mouse8		:RootMenu
+
+# various shortcuts
+#Control Mod1 c	:Exec gnome-calculator
+
+#Super_L v	:Exec victory
+
+# buttons!!
+#Control Mod1 0	:Exec fullfinder
+#Control Mod1 9	:Exec zsend
+#Control Mod1 8	:Exec dattoInfo
+#Control Mod1 7	:Exec vssloveline
+#Control Mod1 6	:Exec compareRT
+#Control Mod1 5	:Exec portChecker
+#Control Mod1 4	:Exec silentcheckin
+#Control Mod1 3	:Exec status
+#Control Mod1 2	:Exec autotestdisk
+#Control Mod1 1	:Exec new_old_info
+#Control Mod1 Shift 0	:Exec offsiteAudit
+#Control Mod1 Shift 9	:Exec vpnup
+#Control Mod1 Shift 8	:Exec addrecoveryuser
+#Control Mod1 Shift 7	:Exec cowMerge
+#Control Mod1 Shift 6	:Exec agentInfo
+#Control Mod1 Shift 5	:Exec rawAgentLog
+#Control Mod1 Shift 4	:Exec getSerial
+
+#Control Mod1 Shift 1	:Exec Sweeneyify
+
+#Mod4 0	:Exec unserialize
+
+#Moving
+Control Mod1 KP_Divide	:MoveTo 10 10
+Control Mod1 KP_1	:Move -5 +5
+Control Mod1 KP_9	:Move +5 -5
+Control Mod1 KP_7	:Move -5 -5
+Control Mod1 KP_3	:Move +5 +5
+Control Mod1 KP_6	:MoveRight 1
+Control Mod1 KP_4	:MoveLeft 1
+Control Mod1 KP_8	:MoveUp 1
+Control Mod1 KP_2 	:MoveDown 1
+Control Mod1 shift KP_6	  :MoveRight 10
+Control Mod1 shift KP_4	  :MoveLeft 10
+Control Mod1 shift KP_8	  :MoveUp 10
+Control Mod1 shift KP_2	  :MoveDown 10
+Control Mod1 KP_5 	:MacroCmd {MoveTo 15 15} {ResizeTo 1115 810}
+Control Mod1 KP_8 	:MacroCmd {MoveTo -1 -88} {ResizeTo 728 745}
+#### Alternate moving using key modes. (i.e. Mod4 w(indow) Mod4 m(ove)).MoveMode 
+Mod4 w Mod4 m               :KeyMode MoveMode
+MoveMode: None Up           :MoveUp 1
+MoveMode: None Down         :MoveDown 1
+MoveMode: None Left         :MoveLeft 1
+MoveMode: None Right        :MoveRight 1
+MoveMode: shift Up          :MoveUp 10
+MoveMode: shift Down        :MoveDown 10
+MoveMode: shift Left        :MoveLeft 10
+MoveMode: shift Right       :MoveRight 10
+
+
+#Resizing
+Control Mod4 KP_Divide		:ResizeTo 800 600
+Control Mod4 KP_Multiply	:MacroCmd {MoveTo 20 20} {ResizeTo 1350 985}
+Control Mod4 KP_Subtract	:Resize -5 -5
+Control Mod4 KP_Add		:Resize +5 +5
+Control Mod4 KP_4		:ResizeHorizontal -1
+Control Mod4 KP_6		:ResizeHorizontal +1
+Control Mod4 KP_8		:ResizeVertical -1
+Control Mod4 KP_2		:ResizeVertical +1
+Control Mod4 shift KP_4		:ResizeHorizontal -10
+Control Mod4 shift KP_6		:ResizeHorizontal +10
+Control Mod4 shift KP_8		:ResizeVertical -10
+Control Mod4 shift KP_2		:ResizeVertical +10
+###Alternate resizing using key modes. (i.e. Mod4 w(indow) Mod4 r(esize)). ResizeMode
+Mod4 w Mod4 r               :KeyMode ResizeMode
+ResizeMode: None Up         :ResizeVertical -1
+ResizeMode: None Down       :ResizeVertical +1
+ResizeMode: None Left       :ResizeHorizontal -1
+ResizeMode: None Right      :ResizeHorizontal +1
+ResizeMode: shift Up         :ResizeVertical -10
+ResizeMode: shift Down       :ResizeVertical +10
+ResizeMode: shift Left       :ResizeHorizontal -10
+ResizeMode: shift Right      :ResizeHorizontal +10
+
+
+#spotify-notify binds
+# (Control +) F5 = Previous, F7 = Play/Pause, F8 = Next
+Mod4 F5	:Exec spotify-notify.py -s -a previous
+Mod4 F7	:Exec spotify-notify.py -s -a playPause
+Mod4 F8	:Exec spotify-notify.py -s -a next

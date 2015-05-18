@@ -1,0 +1,95 @@
+[app] (name=fbrun)
+  [Position]	(CENTER)	{0 0}
+  [Deco]	{NONE}
+  [Layer]	{2}
+[end]
+[app] (name=gmrun) (class=Gmrun)
+  [Head]	{2}
+  [Dimensions]	{21% 4%}
+  [Position]	(UPPERLEFT)	{29% 48%}
+  [Sticky]	{yes}
+  [Layer]	{2}
+  [Close]	{yes}
+[end]
+[app] (name=gimp) (class=Gimp) (role=gimp-toolbox)
+  [Position]	(UPPERLEFT)	{0 94}
+  [Alpha]	{255}
+[end]
+[app] (name=gimp) (class=Gimp) (role=gimp-dock)
+  [Position]	(UPPERLEFT)	{1708 114}
+  [Alpha]	{255}
+[end]
+[app] (name=gimp) (class=Gimp) (role=gimp-image-window)
+  [Position]	(UPPERLEFT)	{339 82}
+  [Alpha]	{255}
+[end]
+[app] (name=feh) (class=feh)
+[end]
+[app] (name=ristretto) (class=Ristretto)
+  [Dimensions]	{1139 912}
+[end]
+[app] (name=chromium) (class=Chromium) (role=browser)
+  [Alpha]	{255}
+[end]
+[app] (name=gimp-2.8) (class=Gimp-2.8) (role=gimp-image-window)
+  [Alpha]	{255}
+[end]
+[app] (name=xv) (class=MPlayer)
+  [Alpha]	{255}
+[end]
+[app] (name=urxvt) (class=URxvt)
+  [Deco]	{NONE}
+  [Close]	{yes}
+[end]
+[app] (name=xterm) (class=XTerm)
+  [Deco]	{NONE}
+  [Close]	{yes}
+[end]
+[app] (name=google-chrome) (class=Google-chrome) (role=browser)
+  [Sticky]	{yes}
+  [Alpha]	{255}
+[end]
+[app] (name=gnome-mplayer) (class=Gnome-mplayer)
+  [Alpha]	{255}
+[end]
+[app] (name=XOSD)
+  [Alpha]	{200}
+[end]
+[group]  (workspace=[current])
+ [app] (name=crx_nckgahadagoaajjgafhacjanaoiihapd) (class=Google-chrome) (role=pop-up)
+  [Dimensions]	{260 484}
+[end]
+[group]  (workspace=[current])
+ [app] (name=gnome-terminal)
+  [Dimensions]	{34% 43%}
+[end]
+[app] (name=terminator) (class=Terminator)
+[end]
+[app] (name=rdesktop) (class=rdesktop)
+  [Alpha]	{255}
+[end]
+[app] (name=TeamViewer.exe) (class=Wine)
+  [Position]	(UPPERLEFT)	{62% 43%}
+  [Alpha]	{255}
+[end]
+[app] (name=sun-awt-X11-XFramePeer) (class=net-ftb-tracking-piwik-PiwikTracker)
+  [Head]	{1}
+[end]
+[app] (name=Minecraft 1.6.4) (class=Minecraft 1.6.4)
+  [Head]	{1}
+  [Dimensions]	{63% 70%}
+[end]
+[app] (name=Navigator) (class=Firefox) (role=browser)
+[end]
+[app] (name=vlc) (class=Vlc) (role=vlc-main)
+  [Dimensions]	{44% 56%}
+[end]
+[group]  (workspace=[current])
+ [app] (name=crx_nckgahadagoaajjgafhacjanaoiihapd) (class=Google-chrome-stable) (role=pop-up)
+  [Head]	{2}
+  [Dimensions]	{43% 57%}
+  [Position]	(UPPERLEFT)	{51% 0%}
+  [Deco]	{NORMAL}
+  [Layer]	{8}
+  [Close]	{yes}
+[end]

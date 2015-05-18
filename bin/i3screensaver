@@ -1,0 +1,8 @@
+#!/bin/bash
+
+path=/var/tmp
+
+maim $path/shot.png
+convert $path/shot.png -blur 0x7 $path/shot-blurred.png
+i3lock -i $path/shot-blurred.png
+rm $path/shot-blurred.png $path/shot.png

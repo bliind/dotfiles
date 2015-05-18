@@ -1,0 +1,3 @@
+#!/bin/bash
+cal -h -3 | osd_cat -d 5 -p top -A center -c white -s 1 -O 1 -f -*-clean-*-r-*-*-30-*-*-*-*-*-*-* -l 8
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+osd_cat -b percentage -d 1 -P $1 -p bottom -o 25 -A center -c green -s 1 -T "Volume" -f -*-clean-*-r-*-*-30-*-*-*-*-*-*-*
+

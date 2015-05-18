@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $(date +'%H:%M:%S') | osd_cat -d 3 -p bottom -o 50 -A center -c green -O 1 -f -*-clean-*-r-*-*-40-*-*-*-*-240-*-* -l 1

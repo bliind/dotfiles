@@ -1,42 +1,52 @@
 #!/bin/bash
-# Requires maim and slop
-# https://github.com/naelstrof/maim
-# https://github.com/naelstrof/slop
-#
-# Could be easily modified to work with import / scrot
+date="$(date +%F_%H-%M-%S)"
 
+filename="${HOME}/shots/TYPE_${date}.png"
 
-date="$(date +%F-%T)"
-
-window() {
-    maim -i "$(xwininfo | awk '/Window id/{print$4}')" "${HOME}"/shots/window-"${date}".png
+upload() {
+    curl -sS -F "name=@$1" http://img.vim-cn.com | xclip -selection clipboard
+    beep -f 500 -l 100
 }
 
-selection() {
-    maim -s "${HOME}"/shots/snip-"${date}".png
+window() {
+    filename="${filename/TYPE/window}"
+    maim -i "$(xwininfo | awk '/Window id/{print$4}')" "$filename"
+}
+
+section() {
+    filename="${filename/TYPE/snip}"
+    maim -s "$filename"
+    beep -f 300 -l 100
 }
 
 paste() {
-    maim -s "${HOME}"/shots/snip-"${date}".png
-    curl -sS -F "name=@${HOME}/shots/snip-${date}.png" http://img.vim-cn.com/ | xclip -selection clipboard
-    beep -f 200
+    section
+    upload "$filename"
+}
+
+usage() {
+    printf "\t%s\n" "Usage: $(basename $0) [option]"
+    printf "\t\t%s\n" "Available Options:"
+    printf "\t%s\t%s\n" "win" "Screenshot window (select window)"
+    printf "\t%s\t%s\n" "sel" "Screenshot section"
+    printf "\t%s\t%s\n" "pas" "Screenshot section, paste to img-vim.cn.com"
 }
 
 error() {
-    printf "%s\n" "Error parsing command line argument. Options are:"
-    printf "\t%s\t%s\n" "win" "Screenshot window (select window)"
-    printf "\t%s\t%s\n" "sel" "Screenshot selection"
-    printf "\t%s\t%s\n" "pas" "Screenshot selection, paste to img-vim.cn.com"
+    printf "%s\n" "Error parsing command line argument."
+    usage
     exit 1
 }
 
 if [[ -n "$1" ]];then
     case "$1" in
         win) window;;
-        sel) selection;;
+        sel) section;;
         pas) paste;;
+         -h) usage;;
           *) error;;
     esac
 else
-    maim "${HOME}"/shots/desktop-"${date}".png
+    filename="${filename/TYPE/desktop}"
+    maim "$filename"
 fi

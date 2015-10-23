@@ -8,6 +8,9 @@ super + alt + Escape
 super + w
 	bspc window -c
 
+super + shift + w
+	bspc window $(winID) -c
+
 super + t
 	bspc desktop -l next
 
@@ -49,7 +52,7 @@ super + {_,shift + }Tab
 super + {comma,period}
 	bspc desktop -C {backward,forward}
 
-super + bracket{left,right}
+button{8,9}
 	bspc desktop -f {prev,next}
 
 super + ctrl + {h,j,k,l}
@@ -68,7 +71,7 @@ super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
 
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} ^{1-9,10}
+	bspc {desktop -f,window -d} focused:^{1-9,10}
 
 ~button1
 	bspc pointer -g focus
@@ -82,41 +85,38 @@ super + @button{1-3}
 super + q
 	bspc window focused -R Right 90
 
+#{_,shift + }button{8}
+#	bspc desktop -f {^1,^2}
+
 #
 # wm independent hotkeys
 #
+
+super + bracket{left,right}
+	transset -p {--dec,--inc} .1
 
 super + Return
 	terminator
 
 super + space
-	gmrun
+	dmenu_run -b -l 10 #gmrun #fbrun -bg black -fg white -title "Run" -nearmouse
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 # my buttons
-ctrl + alt + {1-9}
-	; {new_old_info,autotestdisk,status,silentcheckin,portChecker,compareRT,vssloveline,dattoInfo,zsend}
-
-ctrl + alt + shift 0
-	unserialize
-
 ctrl + alt + l
-	i3screensaver
+	slock -a
 
 XF86AudioLowerVolume
-	killall osd_cat; osdvol $(amixer -D hw:0 set Master 1%- | grep Mono:\ Playback | cut -d "[" -f2 | cut -d "%" -f1)
+	killall osd_cat; osdvol $(volumeControl down)
 
 XF86AudioRaiseVolume
-	killall osd_cat; osdvol $(amixer -D hw:0 set Master 1%+ | grep Mono:\ Playback | cut -d "[" -f2 | cut -d "%" -f1)
+	killall osd_cat; osdvol $(volumeControl up)
 
 super + BackSpace
 	osdclock
 
 {_,super + ,control + ,shift + }Print
 	{mscreenshot,mscreenshot sel,mscreenshot pas,mscreenshot win}
-
-button{9}
-	rdpwatch

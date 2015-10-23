@@ -21,7 +21,7 @@ default_shade_color 000000	# Black
 double_buffer yes
 draw_borders no
 draw_graph_borders no
-draw_outline yes
+draw_outline no
 draw_shades no
 gap_x 1810
 gap_y 10
@@ -56,15 +56,15 @@ lua_load /home/didisoft/.conky/lua.lua
 
 
 TEXT
-${font Zegoe UI:size=8}${color #ffd800}DATE
-${font pftempestafivecondensed:size=6}${color #ffffff}
+${font Zegoe UI:size=8}${color #663300}DATE
+${font pftempestafivecondensed:size=6}${color #000000}
 ${time %H:%M:%S}
 ${time  %B %d, %Y}
 
 
 
-${font Zegoe UI:size=8}${color #ffd800}SYSTEM
-${font pftempestafivecondensed:size=6}${color #ffffff}
+${font Zegoe UI:size=8}${color #663300}SYSTEM
+${font pftempestafivecondensed:size=6}${color #000000}
 Uptime: $uptime_short
 
 CPU: ${cpu cpu0}%
@@ -76,18 +76,18 @@ ${fs_bar 4,80 /}
 /home: ${fs_used /home}
 ${fs_bar 4,80 /home}
 
-${font Zegoe UI:size=8}${color #ffd800}NETWORK
-${font pftempestafivecondensed:size=6}${color #ffffff}
-Signal: ${wireless_link_qual eth0}% 
-${wireless_link_bar 4,80 eth0}
-Ul: ${upspeed eth0} kb/s 
-${upspeedgraph eth0 4,80 000000 000000}
-Dl: ${downspeed eth0} kb/s 
-${downspeedgraph eth0 4,80 000000 000000}
+${font Zegoe UI:size=8}${color #663300}NETWORK
+${font pftempestafivecondensed:size=6}${color #000000}
+Signal: ${wireless_link_qual eth1}% 
+${wireless_link_bar 4,80 eth1}
+Ul: ${upspeed eth1} kb/s 
+${upspeedgraph eth1 4,80 000000 000000}
+Dl: ${downspeed eth1} kb/s 
+${downspeedgraph eth1 4,80 000000 000000}
 
 
-#${font Zegoe UI:size=8}${color #ffd800}PROCESSES $alignr CPU    MEM
-#${font pftempestafivecondensed:size=6}${color #ffffff}${hr}
+#${font Zegoe UI:size=8}${color #663300}PROCESSES $alignr CPU    MEM
+#${font pftempestafivecondensed:size=6}${color #000000}${hr}
 #${top name 1} $alignr ${top cpu 1} ${top mem 1}
 #${top name 2} $alignr ${top cpu 2} ${top mem 2}
 #${top name 3} $alignr ${top cpu 3} ${top mem 3}
